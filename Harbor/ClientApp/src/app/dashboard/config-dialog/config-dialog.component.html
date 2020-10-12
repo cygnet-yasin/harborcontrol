@@ -1,0 +1,90 @@
+<h1 mat-dialog-title>Harbor Configuration</h1>
+<div mat-dialog-content>
+        <div class="button-row">
+            Initial boats
+            <button mat-mini-fab *ngIf="FirstAttempt" color="warn" (click)="data.boatCount == 0 ? 0 : data.boatCount = data.boatCount - 1;">
+                <mat-icon>exposure_neg_1</mat-icon>
+            </button>
+            <button mat-mini-fab disabled>
+                {{data.boatCount}}
+            </button>
+            <button mat-mini-fab *ngIf="FirstAttempt" color="primary" (click)="data.boatCount = data.boatCount + 1;">
+                <mat-icon>exposure_plus_1</mat-icon>
+            </button>
+            &nbsp;<code *ngIf="FirstAttempt && !AllValid && data.boatCount == 0">Please select more than zero boat</code>
+        </div>
+        <div class="button-row">
+            Anchor time per ship
+            <button mat-mini-fab color="warn" (click)="data.anchorTime == 0 ? 0 : data.anchorTime = data.anchorTime - 1;">
+                <mat-icon>exposure_neg_1</mat-icon>
+            </button>
+            <button mat-mini-fab disabled>
+                {{data.anchorTime}}
+            </button>
+            <button mat-mini-fab color="primary" (click)="data.anchorTime = data.anchorTime + 1;">
+                <mat-icon>exposure_plus_1</mat-icon>
+            </button>
+            hour
+            &nbsp;<code *ngIf="FirstAttempt && !AllValid && data.anchorTime == 0">Please select more than zero anchored boat time</code>
+        </div>
+        <div class="button-row">
+            Anchor size
+            <button mat-mini-fab *ngIf="FirstAttempt" color="warn" (click)="data.anchorSize == 0 ? 0 : data.anchorSize = data.anchorSize - 1;">
+                <mat-icon>exposure_neg_1</mat-icon>
+            </button>
+            <button mat-mini-fab disabled>
+                {{data.anchorSize}}
+            </button>
+            <button mat-mini-fab color="primary" (click)="data.anchorSize = data.anchorSize + 1;">
+                <mat-icon>exposure_plus_1</mat-icon>
+            </button>
+            &nbsp;<code *ngIf="FirstAttempt && !AllValid && data.anchorSize == 0">Please select more than zero anchored boat</code>
+        </div>
+        <div class="button-row">
+            Auto generate boat time
+            <button mat-mini-fab color="warn" (click)="data.autoGenerateBoatTime == 0 ? 0 : data.autoGenerateBoatTime = data.autoGenerateBoatTime - 1;">
+                <mat-icon>exposure_neg_1</mat-icon>
+            </button>
+            <button mat-mini-fab disabled>
+                {{data.autoGenerateBoatTime}}
+            </button>
+            <button mat-mini-fab color="primary" (click)="data.autoGenerateBoatTime = data.autoGenerateBoatTime + 1;">
+                <mat-icon>exposure_plus_1</mat-icon>
+            </button>
+            hour
+            &nbsp;<code *ngIf="!AllValid && data.autoGenerateBoatTime == 0">Please select more than zero auto generate boat time</code>
+        </div>
+        <div class="button-row">
+            One hour per 
+            <button mat-mini-fab color="warn" (click)="data.oneHourPerSecond == 0 ? 0 : data.oneHourPerSecond = data.oneHourPerSecond - 1;">
+                <mat-icon>exposure_neg_1</mat-icon>
+            </button>
+            <button mat-mini-fab disabled>
+                {{data.oneHourPerSecond}}
+            </button>
+            <button mat-mini-fab color="primary" (click)="data.oneHourPerSecond = data.oneHourPerSecond + 1;">
+                <mat-icon>exposure_plus_1</mat-icon>
+            </button>
+            second
+            &nbsp;<code *ngIf="!AllValid && data.oneHourPerSecond == 0">Please select more than zero to exchange one hour time to second</code>
+        </div>
+        <div class="button-row">
+            Perimeter line from dock 
+            <button mat-mini-fab color="warn" (click)="data.perimeterLineDistance == 0 ? 0 : data.perimeterLineDistance = data.perimeterLineDistance - 1;">
+                <mat-icon>exposure_neg_1</mat-icon>
+            </button>
+            <button mat-mini-fab disabled>
+                {{data.perimeterLineDistance}}
+            </button>
+            <button mat-mini-fab color="primary" (click)="data.perimeterLineDistance = data.perimeterLineDistance + 1;">
+                <mat-icon>exposure_plus_1</mat-icon>
+            </button>
+            km
+            &nbsp;<code *ngIf="!AllValid && data.perimeterLineDistance == 0">Please select more than zero perimeter line distance from dock</code>
+        </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" *ngIf="FirstAttempt" tabindex="2" (click)="setFirstAttempt()">Set to initialize</button>
+    <button mat-raised-button color="primary" *ngIf="!FirstAttempt" tabindex="2" (click)="updateData()">Update</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
+</div>

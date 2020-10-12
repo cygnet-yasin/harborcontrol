@@ -1,0 +1,8 @@
+D:\Test\Harbor\Models\bin\Debug\netcoreapp2.1\Models.deps.json
+D:\Test\Harbor\Models\bin\Debug\netcoreapp2.1\Models.dll
+D:\Test\Harbor\Models\bin\Debug\netcoreapp2.1\Models.pdb
+D:\Test\Harbor\Models\obj\Debug\netcoreapp2.1\Models.csproj.CoreCompileInputs.cache
+D:\Test\Harbor\Models\obj\Debug\netcoreapp2.1\Models.AssemblyInfoInputs.cache
+D:\Test\Harbor\Models\obj\Debug\netcoreapp2.1\Models.AssemblyInfo.cs
+D:\Test\Harbor\Models\obj\Debug\netcoreapp2.1\Models.dll
+D:\Test\Harbor\Models\obj\Debug\netcoreapp2.1\Models.pdb

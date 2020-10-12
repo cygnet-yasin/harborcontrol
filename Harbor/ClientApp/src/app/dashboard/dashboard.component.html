@@ -1,0 +1,123 @@
+<!-- ============================================================== -->
+<!-- Simple four boxes Row -->
+<!-- ============================================================== -->
+<div fxLayout="row wrap">
+    <!-- column -->    
+    <div fxFlex.gt-lg="66" fxFlex.gt-md="66" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div class="d-flex flex-wrap">
+                    <div>
+                        <mat-card-title>Current running boat</mat-card-title>
+                        <mat-card-subtitle>Under the process boat</mat-card-subtitle> 
+                     </div>
+                </div>
+
+                <div class="barchrt">
+                    <mat-chip-list class="mat-chip-list-stacked">
+                      <mat-chip *ngFor="let availAnchor of availableTotalAnchor"
+                               (focus)="color = availAnchor.BoatStatus == null ? 'gray' : 'primary'"
+                               color="{{availAnchor.BoatStatus == null ? 'gray' : 'primary'}}" selected="true">
+                        Dock {{availAnchor.SrNo}} {{availAnchor.BoatStatus != null ? '- ' + GetBoatName(availAnchor.BoatStatus.boats) : ''}}
+                        <!-- {{availAnchor.BoatStatus != null ? '- ' + GetBoatPositionName(availAnchor.BoatStatus.boatPosition) : ''}} -->
+                        &nbsp;<mat-progress-bar *ngIf="availAnchor.BoatStatus != null && (availAnchor.BoatStatus.boatPosition == 1 || availAnchor.BoatStatus.boatPosition == 3)"
+                        mode="{{availAnchor.BoatStatus != null ? (availAnchor.BoatStatus.boatPosition == 1 ? 'buffer' : availAnchor.BoatStatus.boatPosition == 3 ? 'indeterminate' : '') : ''}}"
+                            color="{{availAnchor.BoatStatus == null ? 'gray' : 'primary'}}"></mat-progress-bar>
+                      </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- column -->    
+    <!-- column -->    
+    <div fxFlex.gt-lg="33" fxFlex.gt-md="33"  fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div class="d-flex flex-wrap">
+                    <div>
+                        <mat-card-title>Status of Harbor</mat-card-title>
+                        <mat-card-subtitle>Different boat Visit</mat-card-subtitle>
+                     </div>
+                    <div class="ml-auto">
+                        <button id="myConfigButton" mat-icon-button (click)="openDialog()">
+                            <mat-icon aria-label="Example icon-button with a heart icon">settings</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <ul class="list-parallel">
+                    <li>
+                        <h6 class=" text-purple  m-0">
+                            <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+                            Initial ship/boat: {{initialParameter.boatCount}}</h6>
+                    </li>
+                    <li>
+                        <h6 class=" text-purple  m-0">
+                            <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+                            Wind Speed: {{initialParameter.windSpeed}} km/h</h6>
+                    </li>
+                    <li>
+                        <h6 class=" text-purple  m-0">
+                            <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+                            Anchored time per ship/boat: {{initialParameter.anchorTime}} hour</h6>
+                    </li>
+                    <li>
+                        <h6 class=" text-purple  m-0">
+                            <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+                            Anchor size: {{initialParameter.anchorSize}} ship/boat</h6>
+                    </li>
+                    <li>
+                        <h6 class=" text-purple  m-0">
+                            <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+                            Anchored: {{GetBoatOnAnchor().length}} ship/boat</h6>
+                    </li>
+                    <li>
+                        <h6 class=" text-purple  m-0">
+                            <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+                            Avail anchor: {{initialParameter.anchorSize - GetBoatOnAnchor().length}} ship/boat</h6>
+                    </li>
+                    <li>
+                        <h6 class=" text-purple  m-0">
+                            <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+                            Perimeter from dock: {{initialParameter.perimeterLineDistance}} km</h6>
+                    </li>
+                    <li>
+                        <h6 class=" text-purple  m-0">
+                            <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+                            Auto generate boat time: {{initialParameter.autoGenerateBoatTime}} hour</h6>
+                    </li>
+                    <li>
+                        <h6 class=" text-purple  m-0">
+                            <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+                            One hour per : {{initialParameter.oneHourPerSecond}} second</h6>
+                    </li>
+                </ul>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Available ({{GetAvailableTotalBoatCount()}}) Boat list </mat-panel-title>
+                            <!-- <mat-panel-description>  </mat-panel-description> -->
+                        </mat-expansion-panel-header>
+                        <mat-list role="list">
+                            <mat-list-item role="listitem">Sail boat ({{GetBoatCount(0)}})</mat-list-item>
+                            <mat-list-item role="listitem">Cargo Ship ({{GetBoatCount(1)}})</mat-list-item>
+                            <mat-list-item role="listitem">Speed boat ({{GetBoatCount(2)}})</mat-list-item>
+                        </mat-list>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Shipped ({{GetShippedTotalBoatCount()}}) Boat list </mat-panel-title>
+                            <!-- <mat-panel-description>  </mat-panel-description> -->
+                        </mat-expansion-panel-header>
+                        <mat-list role="list">
+                            <mat-list-item role="listitem">Sail boat ({{GetShippedBoatCount(0)}})</mat-list-item>
+                            <mat-list-item role="listitem">Cargo Ship ({{GetShippedBoatCount(1)}})</mat-list-item>
+                            <mat-list-item role="listitem">Speed boat ({{GetShippedBoatCount(2)}})</mat-list-item>
+                        </mat-list>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- column -->    
+</div>
