@@ -1,7 +1,7 @@
 <h1>Harbor Control System</h1>
-<p>The Durban harbor control staff requires an application to control the flow of boats and ships into the harbor.</p>
+<p>The Durban harbor control staff requires an application to control the flow of boats and ships at the harbor.</p>
 <p>Tools: Visual Studio 2017 Professional, Visual Studio code.</p>
-<p>Softwares: .NET Core 2.1 SDK, Node.js</p>
+<p>Softwares: .NET Core 2.1 SDK, Node.js, angular cli</p>
 <p>Language & Technology: Microsoft .NET Core, C#.NET, Web Api, Angular 10</p>
 <p>Web Technology: Html, material UI, Typescript, SCSS</p>
 <b>Project Architecture</b>
@@ -33,8 +33,9 @@ npm install node-sass@4.13.1
 <ul>
 <li>Open project solutions and clean & build project solutions.</li>
 <li>All dependency and required packages will install with first build.</li>
-</li>To run application press F5 from visual studio.</li>
+<li>To run application press F5 from visual studio.</li>
 </ul>
+<br/>
 <p>In application display all configuration in front-end.</p>
 <p>User can change config on runtime by clicking setting button on right side</p>
 <p>For sail boat allow in harbor when wind speed btween 10 and 30.</p>
